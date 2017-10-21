@@ -2,7 +2,7 @@ var arr = [4,1,2,3];
 
 Array.prototype.myForEach = function myForEach(callback) {
     for (var i = 0; i <= this.length - 1; i++) {
-        callback(this[i]);
+        callback(this[i], i, this);
     }
 }
 
@@ -12,7 +12,7 @@ arr.myForEach(function (item) {
 
 Array.prototype.myMap = function myMap(callback) {
     for (var i = 0; i <= this.length - 1; i++) {
-        this[i] = callback(this[i]);
+        this[i] = callback(this[i], i, this);
     }
 
     return this;
@@ -30,7 +30,7 @@ var arr1 = [7,4,7,5,9,8,2,1,9,3,6];
 function mySort(array) {
     for (var i = 0; i <= array.length - 2; i++) {
         var curr = array[i]
-            next = array[i + 1]
+        var next = array[i + 1]
 
         if (curr > next) {
             array[i] = next
