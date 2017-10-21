@@ -1,14 +1,14 @@
-var arr = [1,2,2,2,1,4];
+var arr = [4,1,2,3];
 
-// Array.prototype.myForEach = function myForEach(callback) {
-//     for (var i = 0; i <= this.length - 1; i++) {
-//         callback(this[i]);
-//     }
-// }
-//
-// arr.myForEach(function (item) {
-//     console.log('result- ' + item)
-// })
+Array.prototype.myForEach = function myForEach(callback) {
+    for (var i = 0; i <= this.length - 1; i++) {
+        callback(this[i]);
+    }
+}
+
+arr.myForEach(function (item) {
+    console.log('result- ' + item)
+})
 
 Array.prototype.myMap = function myMap(callback) {
     for (var i = 0; i <= this.length - 1; i++) {
@@ -21,3 +21,13 @@ Array.prototype.myMap = function myMap(callback) {
 arr.myMap(function (item) {
     console.log(100 + item)
 })
+
+
+Array.prototype.mySort = function mySort() {
+    //have no idea
+}
+
+arr.mySort()
+
+console.log(arr)
+
