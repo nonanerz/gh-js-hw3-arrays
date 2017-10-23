@@ -24,11 +24,10 @@ arr.myMap(function (item) {
 
 console.log(arr)
 
-
 var arr1 = [2,3,1,7,4,6];
 
 Array.prototype.mySort = function mySort(callback) {
-    var reverse = false
+    var reverse = null
 
     for (var i = 0; i <= this.length - 1; i++) {
 
@@ -36,12 +35,9 @@ Array.prototype.mySort = function mySort(callback) {
         var next = this[i + 1]
 
         if (curr > next) {
+
             if (callback) {
                 var result = callback(curr, next)
-
-                if (result === curr + next) {
-                    reverse = true
-                }
 
                 if (result > 0) {
                     this[i] = next
@@ -60,6 +56,10 @@ Array.prototype.mySort = function mySort(callback) {
 
             }
         }
+
+        if (callback && curr < callback(curr, next) && next < callback(curr, next)) {
+            reverse = true
+        }
     }
     return reverse ? this.reverse() : this
 }
@@ -69,7 +69,8 @@ Array.prototype.mySort = function mySort(callback) {
 console.log(arr1.mySort(function(a, b){return a + b}))
 console.log(arr1.mySort(function(a, b){return a - b}))
 console.log(arr1.sort(function(a, b){return a + b}))
-console.log(arr1.mySort())
+console.log(arr1.sort(function(a, b){return a - b}))
+
 
 
 
