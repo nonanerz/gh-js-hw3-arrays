@@ -29,10 +29,10 @@ var arr1 = [2,3,1,7,4,6];
 Array.prototype.mySort = function mySort(callback) {
     var reverse = null
 
-    for (var i = 0; i <= this.length - 1; i++) {
+    for (var i = 1; i <= this.length; i++) {
 
-        var curr = this[i]
-        var next = this[i + 1]
+        var curr = this[i -1]
+        var next = this[i]
 
         if (curr > next) {
 
@@ -40,18 +40,17 @@ Array.prototype.mySort = function mySort(callback) {
                 var result = callback(curr, next)
 
                 if (result > 0) {
-                    this[i] = next
-                    this[i + 1] = curr
-                    i = -1
-                } else if (result < 0) {
+                    this[i - 1] = next
                     this[i] = curr
-                    this[i + 1] = next
-                    i = -1
+                    i = 0
+                } else if (result < 0) {
+                    this[i - 1] = curr
+                    this[i] = next
                 }
 
             } else {
-                this[i] = next
-                this[i + 1] = curr
+                this[i - 1] = next
+                this[i] = curr
                 i = 0
 
             }
@@ -68,8 +67,7 @@ Array.prototype.mySort = function mySort(callback) {
 
 console.log(arr1.mySort(function(a, b){return a + b}))
 console.log(arr1.mySort(function(a, b){return a - b}))
-console.log(arr1.sort(function(a, b){return a + b}))
-console.log(arr1.sort(function(a, b){return a - b}))
+
 
 
 
